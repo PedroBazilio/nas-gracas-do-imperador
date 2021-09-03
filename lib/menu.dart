@@ -41,7 +41,9 @@ class _MenuState extends State<Menu> {
               ),
               ButtonTheme(
                   child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/criarsala');
+                },
                 child: Text(
                   'Criar Sala',
                   style: TextStyle(fontSize: 20),
@@ -63,7 +65,9 @@ class _MenuState extends State<Menu> {
               SizedBox(width: 20),
               ButtonTheme(
                   child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/partidarapida');
+                },
                 child: Text(
                   'Partida Rápida',
                   style: TextStyle(fontSize: 20),
