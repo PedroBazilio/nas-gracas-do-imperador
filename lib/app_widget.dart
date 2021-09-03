@@ -1,3 +1,5 @@
+import 'package:app_nas_gracas_do_imperador/criar_sala.dart';
+import 'package:app_nas_gracas_do_imperador/partida_rapida.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:app_nas_gracas_do_imperador/configs.dart';
@@ -5,6 +7,7 @@ import 'package:app_nas_gracas_do_imperador/criar_conta.dart';
 import 'package:app_nas_gracas_do_imperador/menu.dart';
 import 'package:app_nas_gracas_do_imperador/tutorial.dart';
 import 'package:app_nas_gracas_do_imperador/creditos.dart';
+import 'Inicial.dart';
 import 'app_controller.dart';
 import 'creditos.dart';
 import 'login.dart';
@@ -17,13 +20,15 @@ class AppWidget extends StatelessWidget {
         animation: AppController.instance,
         builder: (context, child) {
           return MaterialApp(initialRoute: '/', routes: {
-            '/': (context) => Login(),
+            '/': (context) => Inicial(),
+            '/login': (context) => Login(),
             '/menu': (context) => Menu(),
             '/tutorial': (context) => Tutorial(),
             '/creditos': (context) => Creditos(),
             '/configs': (context) => Configs(),
             '/criarconta': (context) => CriarConta(),
-            //'/lobby': (context) => Lobby(),
+            '/criarsala': (context) => CriarSala(),
+            '/partidarapida': (context) => PartidaRapida(),
             //'/game': (context) => Game(),
           });
         });
