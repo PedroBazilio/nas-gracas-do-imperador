@@ -18,7 +18,6 @@ class _TutorialState extends State<Tutorial> {
         child: Row(
           children: [
             Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(height: 50),
                 Container(
@@ -35,7 +34,6 @@ class _TutorialState extends State<Tutorial> {
             ),
             SingleChildScrollView(
               child: Column(
-                //mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   SizedBox(
                     height: 60,
