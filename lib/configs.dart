@@ -9,22 +9,42 @@ class Configs extends StatefulWidget {
 }
 
 class _ConfigsState extends State<Configs> {
+  bool sound = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Row(
         children: [
-          SizedBox(
-            height: 30,
-            width: 80,
+          Column(
+            children: [
+              SizedBox(
+                height: 30,
+                width: 80,
+              ),
+              BackButton(
+                color: Colors.black,
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/menu');
+                },
+              ),
+            ],
           ),
-          Container(
-              child: BackButton(
-            color: Colors.black,
-            onPressed: () {
-              Navigator.of(context).pushNamed('/menu');
-            },
-          )),
+          Column(
+            children: [
+              SizedBox(
+                width: 500,
+                height: 150,
+              ),
+              Switch(
+                value: sound,
+                onChanged: (value) {
+                  setState(() {
+                    sound = value;
+                  });
+                },
+              ),
+            ],
+          )
         ],
       ),
     );
