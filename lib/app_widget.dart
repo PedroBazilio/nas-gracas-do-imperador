@@ -2,15 +2,14 @@ import 'package:app_nas_gracas_do_imperador/criar_sala.dart';
 import 'package:app_nas_gracas_do_imperador/partida_rapida.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:app_nas_gracas_do_imperador/configs.dart';
 import 'package:app_nas_gracas_do_imperador/criar_conta.dart';
 import 'package:app_nas_gracas_do_imperador/menu.dart';
 import 'package:app_nas_gracas_do_imperador/tutorial.dart';
 import 'package:app_nas_gracas_do_imperador/creditos.dart';
-import 'Inicial.dart';
+import '../login.dart';
+import 'inicial.dart';
 import 'app_controller.dart';
-import 'creditos.dart';
-import 'login.dart';
+import 'configs.dart';
 
 class AppWidget extends StatelessWidget {
   @override
