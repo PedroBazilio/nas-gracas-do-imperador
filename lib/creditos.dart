@@ -18,7 +18,6 @@ class _CreditosState extends State<Creditos> {
       child: Row(
         children: [
           Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 40),
               Container(
@@ -35,7 +34,6 @@ class _CreditosState extends State<Creditos> {
           ),
           SingleChildScrollView(
             child: Column(
-              //mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 45,
