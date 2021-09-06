@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:app_nas_gracas_do_imperador/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,9 @@ class CriarConta extends StatefulWidget {
 class _CriarContaState extends State<CriarConta> {
   String usuario = '';
   String senha = '';
+  final AuthService _auth = AuthService();
+
+  dynamic resultado;
 
   Widget _body() {
     return SingleChildScrollView(
@@ -39,10 +43,17 @@ class _CriarContaState extends State<CriarConta> {
               ),
               Flexible(
                 child: TextField(
+                  onChanged: (val) {
+                    setState(() {
+                      usuario = val;
+                    });
+                    print(usuario);
+                  },
                   decoration: InputDecoration(
                       labelText: 'Insira seu nome',
                       border: OutlineInputBorder()),
                 ),
+                
               ),
               SizedBox(
                 width: 120,
@@ -63,6 +74,11 @@ class _CriarContaState extends State<CriarConta> {
               ),
               Flexible(
                 child: TextField(
+                  onChanged: (val) {
+                    setState(() {
+                      senha = val;
+                    });
+                  },
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: 'Insira a senha',
@@ -84,9 +100,28 @@ class _CriarContaState extends State<CriarConta> {
               ),
               ButtonTheme(
                   child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/menu');
+                onPressed: () async => {
+                  if(usuario.isEmpty || senha.isEmpty){
+                    showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Dados Inválidos'),
+                        content: const Text('Por favor, preencha todos os campos! '),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () => Navigator.pop(context, 'OK'),
+                            child: const Text('OK')
+                          ),
+                        ],
+                      ),
+                    )
+                  } else {
+                    // resultado = await _auth.registrarComEmailESenha(usuario, senha);
+                    Navigator.of(context).pushNamed('/menu')
+                  }
                 },
+                  // Navigator.of(context).pushNamed('/menu');
+              
                 child: Text(
                   'Criar conta',
                   style: TextStyle(fontSize: 15),
