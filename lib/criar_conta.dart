@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'global_vars.dart';
+
 class CriarConta extends StatefulWidget {
   const CriarConta({Key? key}) : super(key: key);
 
@@ -11,8 +13,7 @@ class CriarConta extends StatefulWidget {
 }
 
 class _CriarContaState extends State<CriarConta> {
-  String usuario = '';
-  String senha = '';
+  bool check = false;
 
   Widget _body() {
     return SingleChildScrollView(
@@ -85,7 +86,12 @@ class _CriarContaState extends State<CriarConta> {
               ButtonTheme(
                   child: ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/menu');
+                  check = Autenticacao();
+                  if (check == true) {
+                    Navigator.of(context).pushNamed('/menu');
+                  } else {
+                    showAlertDialog(context);
+                  }
                 },
                 child: Text(
                   'Criar conta',
@@ -156,5 +162,38 @@ class _CriarContaState extends State<CriarConta> {
         _body()
       ],
     ));
+  }
+
+  showAlertDialog(BuildContext context) {
+    // configura os botões
+    Widget lembrarButton = TextButton(
+      child: Text("Criar conta"),
+      onPressed: () {
+        Navigator.of(context).pushNamed('/criarconta');
+      },
+    );
+    // configura o  AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Autenticação falhou!"),
+      content: Text('Esse usuário já está cadastrado.'),
+      actions: [
+        lembrarButton,
+      ],
+    );
+    // exibe o dialogo
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+}
+
+bool Autenticacao() {
+  if (Usuario.nome == 'usuario') {
+    return false;
+  } else {
+    return true;
   }
 }
