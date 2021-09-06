@@ -1,3 +1,4 @@
+import 'package:app_nas_gracas_do_imperador/global_vars.dart';
 import 'package:flutter/material.dart';
 
 class Menu extends StatefulWidget {
@@ -8,7 +9,7 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  String nome = 'Nome do Usuário';
+  String nome = Usuario.nome;
 
   Widget _body() {
     return SingleChildScrollView(
