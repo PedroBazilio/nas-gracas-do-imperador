@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:app_nas_gracas_do_imperador/global_vars.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  String usuario = '';
-  String senha = '';
+  bool check = false;
 
   Widget _body() {
     return SingleChildScrollView(
@@ -41,6 +41,9 @@ class _LoginState extends State<Login> {
               ),
               Flexible(
                 child: TextField(
+                  onChanged: (text) {
+                    Usuario.nome = text;
+                  },
                   decoration: InputDecoration(
                       labelText: 'Insira seu nome',
                       border: OutlineInputBorder()),
@@ -65,6 +68,9 @@ class _LoginState extends State<Login> {
               ),
               Flexible(
                 child: TextField(
+                  onChanged: (text) {
+                    Usuario.senha = text;
+                  },
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: 'Insira a senha',
@@ -87,7 +93,12 @@ class _LoginState extends State<Login> {
               ButtonTheme(
                   child: ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/menu');
+                  check = Autenticacao();
+                  if (check == true) {
+                    Navigator.of(context).pushNamed('/menu');
+                  } else {
+                    showAlertDialog(context);
+                  }
                 },
                 child: Text(
                   'Entrar',
@@ -158,5 +169,38 @@ class _LoginState extends State<Login> {
         _body()
       ],
     ));
+  }
+
+  showAlertDialog(BuildContext context) {
+    // configura os botões
+    Widget lembrarButton = TextButton(
+      child: Text("Criar conta"),
+      onPressed: () {
+        Navigator.of(context).pushNamed('/criarconta');
+      },
+    );
+    // configura o  AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Autenticação falhou!"),
+      content: Text('Insira os dados corretos ou crie uma conta nova.'),
+      actions: [
+        lembrarButton,
+      ],
+    );
+    // exibe o dialogo
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+}
+
+bool Autenticacao() {
+  if (Usuario.nome == 'usuario' && Usuario.senha == 'senha123') {
+    return true;
+  } else {
+    return false;
   }
 }

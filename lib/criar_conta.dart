@@ -1,8 +1,9 @@
 import 'dart:ui';
 
-import 'package:app_nas_gracas_do_imperador/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'global_vars.dart';
 
 class CriarConta extends StatefulWidget {
   const CriarConta({Key? key}) : super(key: key);
@@ -12,11 +13,9 @@ class CriarConta extends StatefulWidget {
 }
 
 class _CriarContaState extends State<CriarConta> {
-  String usuario = '';
-  String senha = '';
-  final AuthService _auth = AuthService();
-
-  dynamic resultado;
+  bool check = false;
+  String usuario = "";
+  String senha = "";
 
   Widget _body() {
     return SingleChildScrollView(
@@ -100,24 +99,12 @@ class _CriarContaState extends State<CriarConta> {
               ),
               ButtonTheme(
                   child: ElevatedButton(
-                onPressed: () async => {
-                  if(usuario.isEmpty || senha.isEmpty){
-                    showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Dados Inválidos'),
-                        content: const Text('Por favor, preencha todos os campos! '),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () => Navigator.pop(context, 'OK'),
-                            child: const Text('OK')
-                          ),
-                        ],
-                      ),
-                    )
+                onPressed: () {
+                  check = Autenticacao();
+                  if (check == true) {
+                    Navigator.of(context).pushNamed('/menu');
                   } else {
-                    // resultado = await _auth.registrarComEmailESenha(usuario, senha);
-                    Navigator.of(context).pushNamed('/menu')
+                    showAlertDialog(context);
                   }
                 },
                   // Navigator.of(context).pushNamed('/menu');
@@ -191,5 +178,38 @@ class _CriarContaState extends State<CriarConta> {
         _body()
       ],
     ));
+  }
+
+  showAlertDialog(BuildContext context) {
+    // configura os botões
+    Widget lembrarButton = TextButton(
+      child: Text("Criar conta"),
+      onPressed: () {
+        Navigator.of(context).pushNamed('/criarconta');
+      },
+    );
+    // configura o  AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Autenticação falhou!"),
+      content: Text('Esse usuário já está cadastrado.'),
+      actions: [
+        lembrarButton,
+      ],
+    );
+    // exibe o dialogo
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+}
+
+bool Autenticacao() {
+  if (Usuario.nome == 'usuario') {
+    return false;
+  } else {
+    return true;
   }
 }
