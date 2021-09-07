@@ -117,18 +117,18 @@ class _CriarSalaState extends State<CriarSala> {
             SizedBox(
               width: 530,
             ),
-            ButtonTheme(
-                child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/criarsala');
-              },
-              child: Text(
-                'Iniciar Partida',
-                style: TextStyle(fontSize: 14),
+            Container(
+              height: 60,
+              width: 120,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage('assets/images/Iniciar.png'),
+              )),
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => Navigator.of(context).pushNamed('/criarsala'),
               ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.green, fixedSize: Size(120, 45)),
-            )),
+            )
           ],
         )
       ],

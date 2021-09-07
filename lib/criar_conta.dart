@@ -183,15 +183,16 @@ class _CriarContaState extends State<CriarConta> {
   showAlertDialog(BuildContext context) {
     // configura os botões
     Widget lembrarButton = TextButton(
-      child: Text("Criar conta"),
+      child: Text("Login"),
       onPressed: () {
-        Navigator.of(context).pushNamed('/criarconta');
+        Navigator.of(context).pushNamed('/login');
       },
     );
     // configura o  AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Autenticação falhou!"),
-      content: Text('Esse usuário já está cadastrado.'),
+      content: Text(
+          'Esse usuário já está cadastrado.\nUse outro nome ou faça login.'),
       actions: [
         lembrarButton,
       ],

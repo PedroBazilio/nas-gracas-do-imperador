@@ -30,87 +30,84 @@ class _MenuState extends State<Menu> {
           ],
         ),
         SizedBox(
-          height: 50,
+          height: 30,
         ),
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: Row(
             children: [
-              SizedBox(
-                width: 30,
+              Container(
+                height: 100,
+                width: 200,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                  image: AssetImage('assets/images/CriarSala.png'),
+                )),
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () => Navigator.of(context).pushNamed('/criarsala'),
+                ),
               ),
-              ButtonTheme(
-                  child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/criarsala');
-                },
-                child: Text(
-                  'Criar Sala',
-                  style: TextStyle(fontSize: 20),
-                ),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.green, fixedSize: Size(180, 70)),
-              )),
               SizedBox(width: 20),
-              ButtonTheme(
-                  child: ElevatedButton(
-                onPressed: () {
-                  showAlertDialog(context);
-                },
-                child: Text(
-                  'Entrar em Sala',
-                  style: TextStyle(fontSize: 20),
-                ),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.green, fixedSize: Size(180, 70)),
-              )),
+              Container(
+                height: 100,
+                width: 200,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                  image: AssetImage('assets/images/EntrarEmSala.png'),
+                )),
+                child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () => showAlertDialog(context)),
+              ),
               SizedBox(width: 20),
-              ButtonTheme(
-                  child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/partidarapida');
-                },
-                child: Text(
-                  'Partida Rápida',
-                  style: TextStyle(fontSize: 20),
+              Container(
+                height: 100,
+                width: 200,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                  image: AssetImage('assets/images/PartidaRapida.png'),
+                )),
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () =>
+                      Navigator.of(context).pushNamed('/partidarapida'),
                 ),
-                style: ElevatedButton.styleFrom(
-                    primary: Colors.green, fixedSize: Size(180, 70)),
-              ))
+              )
             ],
           ),
         ),
         SizedBox(
-          height: 75,
+          height: 60,
         ),
         Row(
           children: [
-            SizedBox(width: 40),
-            ButtonTheme(
-                child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/tutorial');
-              },
-              child: Text(
-                'Tutorial',
-                style: TextStyle(fontSize: 15),
+            SizedBox(width: 35),
+            Container(
+              height: 60,
+              width: 120,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage('assets/images/TutorialNotPressed.png'),
+              )),
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => Navigator.of(context).pushNamed('/tutorial'),
               ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.green, fixedSize: Size(100, 40)),
-            )),
-            SizedBox(width: 400),
-            ButtonTheme(
-                child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed('/creditos');
-              },
-              child: Text(
-                'Créditos',
-                style: TextStyle(fontSize: 15),
+            ),
+            SizedBox(width: 370),
+            Container(
+              height: 60,
+              width: 120,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage('assets/images/CreditosNotPressed.png'),
+              )),
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => Navigator.of(context).pushNamed('/creditos'),
               ),
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.green, fixedSize: Size(100, 40)),
-            ))
+            )
           ],
         )
       ]),
