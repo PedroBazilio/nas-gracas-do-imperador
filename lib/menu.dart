@@ -24,7 +24,7 @@ class _MenuState extends State<Menu> {
                 Navigator.of(context).pushNamed('/configs');
               },
             ),
-            SizedBox(width: 140),
+            SizedBox(width: 180),
             Text('Olá, $nome', style: TextStyle(fontSize: 25)),
             SizedBox(width: 50),
           ],
@@ -36,6 +36,9 @@ class _MenuState extends State<Menu> {
           padding: const EdgeInsets.all(20.0),
           child: Row(
             children: [
+              SizedBox(
+                width: 25,
+              ),
               Container(
                 height: 100,
                 width: 200,
@@ -95,7 +98,7 @@ class _MenuState extends State<Menu> {
                 onTap: () => Navigator.of(context).pushNamed('/tutorial'),
               ),
             ),
-            SizedBox(width: 370),
+            SizedBox(width: 420),
             Container(
               height: 60,
               width: 120,
