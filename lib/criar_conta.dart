@@ -40,6 +40,9 @@ class _CriarContaState extends State<CriarConta> {
               ),
               Flexible(
                 child: TextField(
+                  onChanged: (text) {
+                    Usuario.nome = text;
+                  },
                   decoration: InputDecoration(
                       labelText: 'Insira seu nome',
                       border: OutlineInputBorder()),
@@ -64,6 +67,9 @@ class _CriarContaState extends State<CriarConta> {
               ),
               Flexible(
                 child: TextField(
+                  onChanged: (text) {
+                    Usuario.senha = text;
+                  },
                   obscureText: true,
                   decoration: InputDecoration(
                       labelText: 'Insira a senha',
