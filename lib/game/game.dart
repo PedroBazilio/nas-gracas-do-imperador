@@ -88,7 +88,7 @@ class _PartidaState extends State<Partida> {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/menu');
+                    Navigator.of(context).pushNamed('/partida');
                   },
                   child: const Text(""),
                 ),

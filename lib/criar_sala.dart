@@ -126,7 +126,7 @@ class _CriarSalaState extends State<CriarSala> {
               )),
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
-                onTap: () => Navigator.of(context).pushNamed('/criarsala'),
+                onTap: () => Navigator.of(context).pushNamed('/partida'),
               ),
             )
           ],
