@@ -1,5 +1,6 @@
 import 'package:app_nas_gracas_do_imperador/criar_sala.dart';
 import 'package:app_nas_gracas_do_imperador/partida_rapida.dart';
+import 'package:app_nas_gracas_do_imperador/game/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:app_nas_gracas_do_imperador/criar_conta.dart';
@@ -28,6 +29,7 @@ class AppWidget extends StatelessWidget {
             '/criarconta': (context) => CriarConta(),
             '/criarsala': (context) => CriarSala(),
             '/partidarapida': (context) => PartidaRapida(),
+            '/partida': (context) => Partida(),
             //'/game': (context) => Game(),
           });
         });

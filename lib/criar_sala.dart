@@ -119,7 +119,7 @@ class _CriarSalaState extends State<CriarSala> {
             ButtonTheme(
                 child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed('/criarsala');
+                Navigator.of(context).pushNamed('/partida');
               },
               child: Text(
                 'Iniciar Partida',
