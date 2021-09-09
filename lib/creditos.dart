@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+//PAGINA DOS CREDITOS DO JOGO
+
 class Creditos extends StatefulWidget {
   const Creditos({Key? key}) : super(key: key);
 
@@ -23,6 +25,7 @@ class _CreditosState extends State<Creditos> {
               Container(
                 alignment: Alignment.bottomCenter,
                 width: 75,
+                //BOTAO PARA VOLTAR AO MENU
                 child: BackButton(
                   color: Colors.black,
                   onPressed: () {
@@ -41,6 +44,7 @@ class _CreditosState extends State<Creditos> {
                 ),
                 Row(
                   children: [
+                    //TITULO DA PAGINA
                     Text(
                       'Créditos',
                       style: TextStyle(fontSize: 50),
@@ -49,6 +53,7 @@ class _CreditosState extends State<Creditos> {
                   ],
                 ),
                 SizedBox(height: 30),
+                //TEXTO DOS CREDITOS
                 Text(
                   text,
                   style: TextStyle(fontSize: 25),
@@ -62,6 +67,8 @@ class _CreditosState extends State<Creditos> {
     );
   }
 
+
+//WIDGET PARA COLOCAR O FUNDO BORRADO
   @override
   Widget build(BuildContext context) {
     return Scaffold(
