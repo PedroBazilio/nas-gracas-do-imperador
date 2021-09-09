@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+//PAGINA REFERENTE AO LOBBY DE ESPERA QUANDO O JOGADOR SELECIONA A OPÇAO PARTIDA RAPIDA
+
 class PartidaRapida extends StatefulWidget {
   const PartidaRapida({Key? key}) : super(key: key);
 
@@ -27,6 +29,7 @@ class _PartidaRapidaState extends State<PartidaRapida> {
             SizedBox(
               width: 20,
             ),
+            //BOTAO QUE REDIRECIONA O JOGADOR DE VOLTA AO MENU
             BackButton(
               color: Colors.black,
               onPressed: () {
@@ -36,6 +39,7 @@ class _PartidaRapidaState extends State<PartidaRapida> {
             SizedBox(
               width: 480,
             ),
+            //TEXTO COM O ID DA SALA
             Text(
               'Sala: $sala',
               style: TextStyle(fontSize: 20),
@@ -50,6 +54,7 @@ class _PartidaRapidaState extends State<PartidaRapida> {
             SizedBox(
               width: 100,
             ),
+            //MOLDURA E TEXTO CONTENDO O NOME DO JOGADOR 1
             Container(
               height: 110,
               width: 220,
@@ -63,6 +68,7 @@ class _PartidaRapidaState extends State<PartidaRapida> {
             SizedBox(
               width: 50,
             ),
+            //MOLDURA E TEXTO CONTENDO O NOME DO JOGADOR 2
             Container(
               height: 110,
               width: 220,
@@ -83,6 +89,7 @@ class _PartidaRapidaState extends State<PartidaRapida> {
             SizedBox(
               width: 100,
             ),
+            //MOLDURA E TEXTO CONTENDO O NOME DO JOGADOR 3
             Container(
               height: 110,
               width: 220,
@@ -96,6 +103,7 @@ class _PartidaRapidaState extends State<PartidaRapida> {
             SizedBox(
               width: 50,
             ),
+            //MOLDURA E TEXTO CONTENDO O NOME DO JOGADOR 4
             Container(
               height: 110,
               width: 220,
@@ -112,6 +120,7 @@ class _PartidaRapidaState extends State<PartidaRapida> {
     );
   }
 
+//COLOCAR O FUNDO BORRADO
   @override
   Widget build(BuildContext context) {
     return Scaffold(
