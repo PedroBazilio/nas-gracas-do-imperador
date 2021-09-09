@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+//PAGINA REFERENTE AO TUTORIAL DO JOGO
+
 class Tutorial extends StatefulWidget {
   const Tutorial({Key? key}) : super(key: key);
 
@@ -87,6 +89,7 @@ Se inicia o próximo turno.
               Container(
                 alignment: Alignment.bottomCenter,
                 width: 75,
+                //BOTAO QUE REDIRECIONA O JOGADOR DE VOLTA AO MENU
                 child: BackButton(
                   color: Colors.black,
                   onPressed: () {
@@ -104,6 +107,7 @@ Se inicia o próximo turno.
                 ),
                 Row(
                   children: [
+                    //TITULO DA PAGINA - TUTORIAL
                     Text(
                       'Tutorial',
                       style: TextStyle(fontSize: 50),
@@ -114,6 +118,7 @@ Se inicia o próximo turno.
                   ],
                 ),
                 SizedBox(height: 30),
+                //TEXTO DO TUTORIAL
                 Text(
                   text,
                   style: TextStyle(fontSize: 20),
@@ -126,6 +131,7 @@ Se inicia o próximo turno.
     );
   }
 
+//COLOCAR O FUNDO BORRADO
   @override
   Widget build(BuildContext context) {
     return Scaffold(
