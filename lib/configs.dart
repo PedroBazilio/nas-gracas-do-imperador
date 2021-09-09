@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+//PAGINA DAS CONFIGURAÇOES  --AINDA INUTILIZADA--
+
 class Configs extends StatefulWidget {
   const Configs({Key? key}) : super(key: key);
 
@@ -23,6 +25,7 @@ class _ConfigsState extends State<Configs> {
                 height: 30,
                 width: 80,
               ),
+              //BOTAO PARA VOLTAR AO MENU
               BackButton(
                 color: Colors.black,
                 onPressed: () {
@@ -37,6 +40,7 @@ class _ConfigsState extends State<Configs> {
                 width: 500,
                 height: 180,
               ),
+              //TEXTO E SLIDER DO SOM
               Row(
                 children: [
                   Text(
@@ -61,6 +65,7 @@ class _ConfigsState extends State<Configs> {
     );
   }
 
+//WIDGET PARA COLOCAR O FUNDO BORRADO
   @override
   Widget build(BuildContext context) {
     return Scaffold(
