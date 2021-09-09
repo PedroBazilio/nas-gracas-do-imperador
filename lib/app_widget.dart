@@ -13,6 +13,8 @@ import 'inicial.dart';
 import 'app_controller.dart';
 import 'configs.dart';
 
+//CLASSE QUE FAZ O CONTROLE DAS ROTAS DO APP
+
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
