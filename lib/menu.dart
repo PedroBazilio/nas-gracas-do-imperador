@@ -1,6 +1,8 @@
 import 'package:app_nas_gracas_do_imperador/global_vars.dart';
 import 'package:flutter/material.dart';
 
+//PAGINA REFERENTE AO MENU DO JOGO
+
 class Menu extends StatefulWidget {
   const Menu({Key? key}) : super(key: key);
 
@@ -18,6 +20,7 @@ class _MenuState extends State<Menu> {
         Row(
           children: [
             SizedBox(width: 20),
+            //BOTAO QUE REDIRECIONA O JOGADOR A TELA DE CONFIGURAÇOES
             FloatingActionButton(
               child: Icon(Icons.settings),
               onPressed: () {
@@ -25,6 +28,7 @@ class _MenuState extends State<Menu> {
               },
             ),
             SizedBox(width: 180),
+            //TEXTO COM O NOME DO USUARIO
             Text('Olá, $nome', style: TextStyle(fontSize: 25)),
             SizedBox(width: 50),
           ],
@@ -39,6 +43,7 @@ class _MenuState extends State<Menu> {
               SizedBox(
                 width: 25,
               ),
+              //BOTAO DE CRIAR SALA
               Container(
                 height: 100,
                 width: 200,
@@ -52,6 +57,7 @@ class _MenuState extends State<Menu> {
                 ),
               ),
               SizedBox(width: 20),
+              //BOTAO PARA O JOGADOR ENTRAR EM UMA SALA ESPECIFICA
               Container(
                 height: 100,
                 width: 200,
@@ -64,6 +70,7 @@ class _MenuState extends State<Menu> {
                     onTap: () => showAlertDialog(context)),
               ),
               SizedBox(width: 20),
+              //BOTAO PARA O JOGADOR BUSCAR UMA PARTIDA ALEATORIA
               Container(
                 height: 100,
                 width: 200,
@@ -86,6 +93,7 @@ class _MenuState extends State<Menu> {
         Row(
           children: [
             SizedBox(width: 35),
+            //BOTAO QUE REDIRECIONA O JOGADOR A TELA DO TUTORIAL DO JOGO
             Container(
               height: 60,
               width: 120,
@@ -99,6 +107,7 @@ class _MenuState extends State<Menu> {
               ),
             ),
             SizedBox(width: 420),
+            //BOTAO QUE REDIRECIONA O JOGADOR A TELA DE CREDITOS
             Container(
               height: 60,
               width: 120,
@@ -117,6 +126,7 @@ class _MenuState extends State<Menu> {
     );
   }
 
+//COLOCAR O FUNDO
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,6 +144,7 @@ class _MenuState extends State<Menu> {
     ));
   }
 
+//POPUP PARA O JOGADOR DIGITAR O ID DA SALA QUE DESEJA ENTRAR, QUANDO SELECIONAR A OPCAO DE ENTRAR EM SALA
   showAlertDialog(BuildContext context) {
     // configura os botões
     Widget lembrarButton = TextButton(
