@@ -3,6 +3,8 @@ import 'dart:ui';
 import 'package:app_nas_gracas_do_imperador/global_vars.dart';
 import 'package:flutter/material.dart';
 
+//PAGINA REFERENTE A CRIAÇAO DE UMA SALA PELO USUARIO
+
 class CriarSala extends StatefulWidget {
   const CriarSala({Key? key}) : super(key: key);
 
@@ -28,6 +30,7 @@ class _CriarSalaState extends State<CriarSala> {
             SizedBox(
               width: 20,
             ),
+            //BOTAO PARA VOLTAR AO MENU
             BackButton(
               color: Colors.black,
               onPressed: () {
@@ -37,6 +40,7 @@ class _CriarSalaState extends State<CriarSala> {
             SizedBox(
               width: 480,
             ),
+            //TEXTO COM O ID DA SALA
             Text(
               'Sala: $sala',
               style: TextStyle(fontSize: 20),
@@ -51,6 +55,7 @@ class _CriarSalaState extends State<CriarSala> {
             SizedBox(
               width: 100,
             ),
+            //MOLDURA E TEXTO CONTENDO O NOME DO JOGADOR 1, NO CASO O CRIADOR DA SALA
             Container(
               height: 110,
               width: 220,
@@ -64,6 +69,7 @@ class _CriarSalaState extends State<CriarSala> {
             SizedBox(
               width: 50,
             ),
+            //MOLDURA E TEXTO CONTENDO O NOME DO JOGADOR 2
             Container(
               height: 110,
               width: 220,
@@ -84,6 +90,7 @@ class _CriarSalaState extends State<CriarSala> {
             SizedBox(
               width: 100,
             ),
+            //MOLDURA E TEXTO CONTENDO O NOME DO JOGADOR 3
             Container(
               height: 110,
               width: 220,
@@ -97,6 +104,7 @@ class _CriarSalaState extends State<CriarSala> {
             SizedBox(
               width: 50,
             ),
+            //MOLDURA E TEXTO CONTENDO O NOME DO JOGADOR 4
             Container(
               height: 110,
               width: 220,
@@ -117,6 +125,7 @@ class _CriarSalaState extends State<CriarSala> {
             SizedBox(
               width: 530,
             ),
+            //BOTAO PARA INICIAR A PARTIDA - SOMENTE VISIVEL AO CRIADOR DA PARTIDA
             Container(
               height: 60,
               width: 120,
@@ -135,6 +144,8 @@ class _CriarSalaState extends State<CriarSala> {
     );
   }
 
+
+//COLOCAR O FUNDO BORRADO
   @override
   Widget build(BuildContext context) {
     return Scaffold(
