@@ -47,6 +47,8 @@ class Personagem1 extends StatelessWidget {
   }
 }
 
+// As outras cartas de personagens são construiídas da mesma forma que a primeira
+
 class Personagem2 extends StatelessWidget {
   const Personagem2({ Key? key }) : super(key: key);
 
