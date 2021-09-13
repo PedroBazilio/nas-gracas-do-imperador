@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+import 'package:app_nas_gracas_do_imperador/model/usuario.dart';
+import 'package:app_nas_gracas_do_imperador/services/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +18,9 @@ class CriarConta extends StatefulWidget {
 class _CriarContaState extends State<CriarConta> {
   bool check = false;
   String usuario = "";
+  String email = "";
   String senha = "";
+  AuthService _auth = AuthService();
 
   Widget _body() {
     return SingleChildScrollView(
@@ -34,7 +39,37 @@ class _CriarContaState extends State<CriarConta> {
           Row(
             children: [
               SizedBox(
-                width: 130,
+                width: 142,
+              ),
+              Text(
+                'E-mail:  ',
+                style: TextStyle(fontSize: 20),
+              ),
+              Flexible(
+                child: TextField(
+                  onChanged: (val) {
+                    setState(() {
+                      email = val;
+                    });
+                    print(usuario);
+                  },
+                  decoration: InputDecoration(
+                      labelText: 'Insira seu e-mail',
+                      border: OutlineInputBorder()),
+                ),
+              ),
+              SizedBox(
+                width: 120,
+              )
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            children: [
+              SizedBox(
+                width: 128,
               ),
               Text(
                 'Usuário:  ',
@@ -52,7 +87,6 @@ class _CriarContaState extends State<CriarConta> {
                       labelText: 'Insira seu nome',
                       border: OutlineInputBorder()),
                 ),
-                
               ),
               SizedBox(
                 width: 120,
@@ -100,15 +134,33 @@ class _CriarContaState extends State<CriarConta> {
               ButtonTheme(
                   child: ElevatedButton(
                 onPressed: () {
-                  check = Autenticacao();
-                  if (check == true) {
-                    Navigator.of(context).pushNamed('/menu');
-                  } else {
-                    showAlertDialog(context);
-                  }
+                  // check = Autenticacao(context);
+                  _auth
+                      .registrarComEmailESenha(email, senha, usuario)
+                      .then((resultado) {
+                    if (resultado == null) {
+                      // _auth.usuario!.updateDisplayName(usuario);
+
+                      print("criou e retornou certo! user: " +
+                          _auth.usuario!.displayName.toString());
+
+                      Navigator.of(context).pushNamed('/menu');
+                    } else {
+                      print("Retorno não nulo do registro>>>>");
+                      print(resultado);
+                      showAlertDialog(context, resultado);
+
+                      //  Scaffold.of(context).showSnackBar(SnackBar(
+                      //      content: Text(
+                      //      resultado,
+                      //     style: TextStyle(fontSize: 16),
+                      //        ),
+                      //   ));
+                    }
+                  });
                 },
-                  // Navigator.of(context).pushNamed('/menu');
-              
+                // Navigator.of(context).pushNamed('/menu');
+
                 child: Text(
                   'Criar conta',
                   style: TextStyle(fontSize: 15),
@@ -180,7 +232,7 @@ class _CriarContaState extends State<CriarConta> {
     ));
   }
 
-  showAlertDialog(BuildContext context) {
+  showAlertDialog(BuildContext context, String texto) {
     // configura os botões
     Widget lembrarButton = TextButton(
       child: Text("Login"),
@@ -191,8 +243,7 @@ class _CriarContaState extends State<CriarConta> {
     // configura o  AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Autenticação falhou!"),
-      content: Text(
-          'Esse usuário já está cadastrado.\nUse outro nome ou faça login.'),
+      content: Text(texto),
       actions: [
         lembrarButton,
       ],
@@ -205,12 +256,19 @@ class _CriarContaState extends State<CriarConta> {
       },
     );
   }
-}
 
-bool Autenticacao() {
-  if (Usuario.nome == 'usuario') {
-    return false;
-  } else {
-    return true;
-  }
+  // bool Autenticacao(BuildContext context) {
+  //   bool retorno = false;
+
+  //   // } on AuthException catch (e) {
+  //   //   print("catch 1");
+
+  //   //   showAlertDialog(context, e.toString());
+  //   //   return false;
+  //   // } on Exception catch(ex){
+  //   //   print("catch 2");
+  //   // }
+  //   return retorno;
+  // }
+
 }

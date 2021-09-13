@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:app_nas_gracas_do_imperador/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,7 @@ class Configs extends StatefulWidget {
 
 class _ConfigsState extends State<Configs> {
   bool sound = true;
+  AuthService _auth = new AuthService();
 
   Widget _body() {
     return Container(
@@ -52,8 +54,18 @@ class _ConfigsState extends State<Configs> {
                       });
                     },
                   ),
+                  
                 ],
               ),
+              Row(children: [
+                TextButton(
+                    child: Text("Logout"),
+                    onPressed: () {
+                      _auth.logout();
+                      Navigator.of(context).pushNamed('/login');
+                    },
+                  )
+              ],)
             ],
           )
         ],

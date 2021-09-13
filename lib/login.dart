@@ -1,6 +1,7 @@
 import 'dart:ui';
 
-import 'package:app_nas_gracas_do_imperador/global_vars.dart';
+import 'package:app_nas_gracas_do_imperador/services/auth_service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,6 +14,9 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   bool check = false;
+  String email = "";
+  String senha = "";
+  AuthService _auth = AuthService();
 
   Widget _body() {
     return SingleChildScrollView(
@@ -42,7 +46,7 @@ class _LoginState extends State<Login> {
               Flexible(
                 child: TextField(
                   onChanged: (text) {
-                    Usuario.nome = text;
+                    email = text;
                   },
                   decoration: InputDecoration(
                       labelText: 'Insira seu nome',
@@ -69,7 +73,7 @@ class _LoginState extends State<Login> {
               Flexible(
                 child: TextField(
                   onChanged: (text) {
-                    Usuario.senha = text;
+                    senha = text;
                   },
                   obscureText: true,
                   decoration: InputDecoration(
@@ -93,12 +97,35 @@ class _LoginState extends State<Login> {
               ButtonTheme(
                   child: ElevatedButton(
                 onPressed: () {
-                  check = Autenticacao();
-                  if (check == true) {
-                    Navigator.of(context).pushNamed('/menu');
-                  } else {
-                    showAlertDialog(context);
-                  }
+                  // check = Autenticacao();
+                  _auth.login(email, senha).then((resultado) {
+                    try {
+                      print("resultado: " + resultado.toString());
+                      if (resultado == null) {
+                        print("autenticou-----");
+                        print(resultado);
+                        Navigator.of(context).pushNamed('/menu');
+                      } else {
+                        print("Retorno login não nulo do registro-----");
+                        print(resultado);
+                       
+                        //  Scaffold.of(context).showSnackBar(SnackBar(
+                        //      content: Text(
+                        //      resultado,
+                        //     style: TextStyle(fontSize: 16),
+                        //        ),
+                        //   ));
+                      }
+                    } on FirebaseAuthException catch (e) {
+                      if (e.code == 'user-not-found') {
+                         showAlertDialog(context, 'Email não encontrado. Cadastre-se.');
+                      } else if (e.code == 'wrong-password') {
+                        showAlertDialog(context, 'Senha incorreta. Tente novamente');
+                      } else {
+                        showAlertDialog(context, e.message.toString());
+                      }
+                    }
+                  });
                 },
                 child: Text(
                   'Entrar',
@@ -171,10 +198,10 @@ class _LoginState extends State<Login> {
     ));
   }
 
-  showAlertDialog(BuildContext context) {
+  showAlertDialog(BuildContext context, String texto) {
     // configura os botões
     Widget lembrarButton = TextButton(
-      child: Text("Criar conta"),
+      child: Text("Login"),
       onPressed: () {
         Navigator.of(context).pushNamed('/criarconta');
       },
@@ -182,7 +209,7 @@ class _LoginState extends State<Login> {
     // configura o  AlertDialog
     AlertDialog alert = AlertDialog(
       title: Text("Autenticação falhou!"),
-      content: Text('Insira os dados corretos ou crie uma conta nova.'),
+      content: Text(texto),
       actions: [
         lembrarButton,
       ],
@@ -195,12 +222,10 @@ class _LoginState extends State<Login> {
       },
     );
   }
-}
 
-bool Autenticacao() {
-  if (Usuario.nome == 'usuario' && Usuario.senha == 'senha123') {
-    return true;
-  } else {
-    return false;
-  }
+  // bool Autenticacao() {
+  //   bool retorno = false;
+
+  //   return retorno;
+  // }
 }

@@ -1,4 +1,4 @@
-class Usuario {
-  static String nome = 'Usuário';
-  static String senha = '';
-}
+// class Usuario {
+//   static String nome = 'Usuário';
+//   static String senha = '';
+// }

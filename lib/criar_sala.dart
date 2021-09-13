@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:app_nas_gracas_do_imperador/global_vars.dart';
+import 'package:app_nas_gracas_do_imperador/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class CriarSala extends StatefulWidget {
@@ -11,12 +12,17 @@ class CriarSala extends StatefulWidget {
 }
 
 class _CriarSalaState extends State<CriarSala> {
+  AuthService _auth = AuthService();
   String sala = ' 9999';
-  String player1 = Usuario.nome;
+  String? player1 = "Jogador 1";
   String player2 = 'Jogador 2';
   String player3 = 'Jogador 3';
   String player4 = 'Jogador 4';
 
+  _CriarSalaState() {
+    player1 = _auth.usuario!.displayName;
+  }
+  
   Widget _body() {
     return Column(
       children: [

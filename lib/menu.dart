@@ -1,4 +1,5 @@
 import 'package:app_nas_gracas_do_imperador/global_vars.dart';
+import 'package:app_nas_gracas_do_imperador/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class Menu extends StatefulWidget {
@@ -9,8 +10,15 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  String nome = Usuario.nome;
+  AuthService _auth = AuthService();
 
+  String? nome = "Jogador";
+
+  _MenuState(){
+    print("Antes pegar displayname");
+    nome = _auth.usuario!.displayName;
+  }
+  
   Widget _body() {
     return SingleChildScrollView(
       child: Column(children: [
@@ -136,6 +144,7 @@ class _MenuState extends State<Menu> {
     Widget lembrarButton = TextButton(
       child: Text("Entrar"),
       onPressed: () {
+        _auth.logout();
         Navigator.of(context).pushNamed('/pregamelobby');
       },
     );
