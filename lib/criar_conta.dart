@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 
 import 'global_vars.dart';
 
+//PAGINA DA CRIAÇAO DE CONTA
+
 class CriarConta extends StatefulWidget {
   const CriarConta({Key? key}) : super(key: key);
 
@@ -29,6 +31,7 @@ class _CriarContaState extends State<CriarConta> {
           SizedBox(
             height: 50,
           ),
+          //TITULO DA PAGINA - CRIE SUA CONTA
           Text(
             'Crie sua conta',
             style: TextStyle(fontSize: 30),
@@ -71,6 +74,7 @@ class _CriarContaState extends State<CriarConta> {
               SizedBox(
                 width: 128,
               ),
+              //TEXTO E TEXTFIELD DO NOME DO USUARIO
               Text(
                 'Usuário:  ',
                 style: TextStyle(fontSize: 20),
@@ -101,6 +105,7 @@ class _CriarContaState extends State<CriarConta> {
               SizedBox(
                 width: 130,
               ),
+              //TEXTO E TEXTFIELD DA SENHA
               Text(
                 'Senha:    ',
                 style: TextStyle(fontSize: 20),
@@ -131,6 +136,7 @@ class _CriarContaState extends State<CriarConta> {
               SizedBox(
                 width: 450,
               ),
+              //BOTAO CRIAR CONTA
               ButtonTheme(
                   child: ElevatedButton(
                 onPressed: () {
@@ -192,6 +198,7 @@ class _CriarContaState extends State<CriarConta> {
               SizedBox(
                 width: 100,
               ),
+              //BOTAO PARA SER REDIRECIONADO A PAGINA DE LOGIN
               ButtonTheme(
                   child: ElevatedButton(
                 onPressed: () {
@@ -211,6 +218,8 @@ class _CriarContaState extends State<CriarConta> {
     );
   }
 
+
+//COLOCA O FUNDO BORRADO
   @override
   Widget build(BuildContext context) {
     return Scaffold(

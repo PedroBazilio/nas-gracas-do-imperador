@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+//PAGINA REFERENTE AO LOGIN DO USUARIO
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -25,6 +27,7 @@ class _LoginState extends State<Login> {
           SizedBox(
             height: 50,
           ),
+          //TITULO DA PAGINA - LOGIN
           Text(
             'Login',
             style: TextStyle(fontSize: 30),
@@ -37,6 +40,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: 130,
               ),
+              //TEXTO E TEXTFIELD PARA O NOME DO USUARIO
               Text(
                 'Usuário:  ',
                 style: TextStyle(
@@ -66,6 +70,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: 130,
               ),
+              //TEXTO E TEXTFIELD PARA A SENHA
               Text(
                 'Senha:    ',
                 style: TextStyle(fontSize: 20),
@@ -94,6 +99,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: 450,
               ),
+              //BOTAO DE LOGIN QUE LEVA O JOGADOR AO MENU, CASO PASSE PELA AUTENTICAÇAO
               ButtonTheme(
                   child: ElevatedButton(
                 onPressed: () {
@@ -158,6 +164,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: 110,
               ),
+              //BOTAO QUE REDIRECIONA O JOGADOR A PAGINA DE CRIAÇAO DE CONTA
               ButtonTheme(
                   child: ElevatedButton(
                 onPressed: () {
@@ -177,6 +184,7 @@ class _LoginState extends State<Login> {
     );
   }
 
+//COLOCAR O FUNDO BORRADO
   @override
   Widget build(BuildContext context) {
     return Scaffold(

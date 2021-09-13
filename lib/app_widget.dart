@@ -1,6 +1,7 @@
 import 'package:app_nas_gracas_do_imperador/criar_sala.dart';
 import 'package:app_nas_gracas_do_imperador/partida_rapida.dart';
 import 'package:app_nas_gracas_do_imperador/pre_game_lobby.dart';
+import 'package:app_nas_gracas_do_imperador/game/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:app_nas_gracas_do_imperador/criar_conta.dart';
@@ -11,6 +12,8 @@ import '../login.dart';
 import 'inicial.dart';
 import 'app_controller.dart';
 import 'configs.dart';
+
+//CLASSE QUE FAZ O CONTROLE DAS ROTAS DO APP
 
 class AppWidget extends StatelessWidget {
   @override
@@ -30,6 +33,7 @@ class AppWidget extends StatelessWidget {
             '/criarsala': (context) => CriarSala(),
             '/partidarapida': (context) => PartidaRapida(),
             '/pregamelobby': (context) => PreGameLobby(),
+            '/partida': (context) => Partida(),
             //'/game': (context) => Game(),
           });
         });
