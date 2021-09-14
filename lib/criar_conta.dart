@@ -29,7 +29,7 @@ class _CriarContaState extends State<CriarConta> {
       child: Column(
         children: [
           SizedBox(
-            height: 50,
+            height: 20,
           ),
           //TITULO DA PAGINA - CRIE SUA CONTA
           Text(
@@ -37,7 +37,7 @@ class _CriarContaState extends State<CriarConta> {
             style: TextStyle(fontSize: 30),
           ),
           SizedBox(
-            height: 20,
+            height: 15,
           ),
           Row(
             children: [
@@ -178,9 +178,6 @@ class _CriarContaState extends State<CriarConta> {
               )),
             ],
           ),
-          SizedBox(
-            height: 15,
-          ),
           Row(
             children: [
               SizedBox(
@@ -193,7 +190,7 @@ class _CriarContaState extends State<CriarConta> {
             ],
           ),
           SizedBox(
-            height: 10,
+            height: 5,
           ),
           Row(
             children: [
