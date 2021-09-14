@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:ui';
 
 import 'package:app_nas_gracas_do_imperador/services/auth_service.dart';
@@ -103,35 +105,34 @@ class _LoginState extends State<Login> {
               ButtonTheme(
                   child: ElevatedButton(
                 onPressed: () {
-                  // check = Autenticacao();
-                  _auth.login(email, senha).then((resultado) {
-                    try {
-                      print("resultado: " + resultado.toString());
-                      if (resultado == null) {
-                        print("autenticou-----");
-                        print(resultado);
-                        Navigator.of(context).pushNamed('/menu');
-                      } else {
-                        print("Retorno login não nulo do registro-----");
-                        print(resultado);
-                       
-                        //  Scaffold.of(context).showSnackBar(SnackBar(
-                        //      content: Text(
-                        //      resultado,
-                        //     style: TextStyle(fontSize: 16),
-                        //        ),
-                        //   ));
-                      }
-                    } on FirebaseAuthException catch (e) {
+                  if (email.isNotEmpty && senha.isNotEmpty) {
+                    _auth.login(email, senha).then((resultado) {
+                      Navigator.of(context).pushNamed('/menu');
+                    }).catchError((e, stackTrace) {
                       if (e.code == 'user-not-found') {
-                         showAlertDialog(context, 'Email não encontrado. Cadastre-se.');
+                        showAlertDialog(
+                            context,
+                            'Email não encontrado. Cadastre-se.',
+                            "Cadastrar",
+                            "/criarconta");
                       } else if (e.code == 'wrong-password') {
-                        showAlertDialog(context, 'Senha incorreta. Tente novamente');
+                        showAlertDialog(context,
+                            'Senha incorreta. Tente novamente', "Ok", "/login");
+                      } else if (e.code == 'invalid-email') {
+                        showAlertDialog(context, 'Digite um e-mail válido!',
+                            "Ok", "/login");
                       } else {
-                        showAlertDialog(context, e.message.toString());
+                        showAlertDialog(
+                            context, e.message.toString(), "Ok", "/login");
                       }
-                    }
-                  });
+                    });
+                  } else {
+                    showAlertDialog(
+                        context,
+                        'É necessário preencher todos os campos!',
+                        "Ok",
+                        "/login");
+                  }
                 },
                 child: Text(
                   'Entrar',
@@ -206,17 +207,20 @@ class _LoginState extends State<Login> {
     ));
   }
 
-  showAlertDialog(BuildContext context, String texto) {
+  showAlertDialog(BuildContext context, String texto, String textoBotao,
+      String telaNavegacao) {
     // configura os botões
     Widget lembrarButton = TextButton(
-      child: Text("Login"),
+      child: Text(textoBotao),
       onPressed: () {
-        Navigator.of(context).pushNamed('/criarconta');
+        if (telaNavegacao.isNotEmpty) {
+          Navigator.of(context).pushNamed(telaNavegacao);
+        }
       },
     );
     // configura o  AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Autenticação falhou!"),
+      title: Text("Autenticação Falhou!"),
       content: Text(texto),
       actions: [
         lembrarButton,

@@ -54,7 +54,6 @@ class _CriarContaState extends State<CriarConta> {
                     setState(() {
                       email = val;
                     });
-                    print(usuario);
                   },
                   decoration: InputDecoration(
                       labelText: 'Insira seu e-mail',
@@ -144,26 +143,29 @@ class _CriarContaState extends State<CriarConta> {
                   _auth
                       .registrarComEmailESenha(email, senha, usuario)
                       .then((resultado) {
-                    if (resultado == null) {
-                      // _auth.usuario!.updateDisplayName(usuario);
-
-                      print("criou e retornou certo! user: " +
-                          _auth.usuario!.displayName.toString());
-
+                    if (resultado.user != null) {
                       Navigator.of(context).pushNamed('/menu');
                     } else {
-                      print("Retorno não nulo do registro>>>>");
-                      print(resultado);
-                      showAlertDialog(context, resultado);
-
-                      //  Scaffold.of(context).showSnackBar(SnackBar(
-                      //      content: Text(
-                      //      resultado,
-                      //     style: TextStyle(fontSize: 16),
-                      //        ),
-                      //   ));
+                      showAlertDialog(context, "Criação Falhou!",
+                          "Erro ao criar usuário!", "Ok", "/criarconta");
+                    }
+                  }).catchError((e, stackTrace) {
+                    if (e.code == 'weak-password') {
+                      showAlertDialog(
+                          context,
+                          "Criação Falhou!",
+                          'Senha muito fraca! Por favor, tente novamente.',
+                          "Ok",
+                          "/criarconta");
+                    } else if (e.code == 'invalid-email') {
+                      showAlertDialog(context, "Criação Falhou!",
+                          'Digite um e-mail válido!', "Ok", "/criarconta");
+                    } else {
+                      showAlertDialog(context, "Criação Falhou!",
+                          e.message.toString(), "Ok", "/criarconta");
                     }
                   });
+                  ;
                 },
                 // Navigator.of(context).pushNamed('/menu');
 
@@ -218,7 +220,6 @@ class _CriarContaState extends State<CriarConta> {
     );
   }
 
-
 //COLOCA O FUNDO BORRADO
   @override
   Widget build(BuildContext context) {
@@ -241,17 +242,20 @@ class _CriarContaState extends State<CriarConta> {
     ));
   }
 
-  showAlertDialog(BuildContext context, String texto) {
+  showAlertDialog(BuildContext context, String titulo, String texto,
+      String textoBotao, String telaNavegacao) {
     // configura os botões
     Widget lembrarButton = TextButton(
-      child: Text("Login"),
+      child: Text(textoBotao),
       onPressed: () {
-        Navigator.of(context).pushNamed('/login');
+        if (telaNavegacao.isNotEmpty) {
+          Navigator.of(context).pushNamed(telaNavegacao);
+        }
       },
     );
     // configura o  AlertDialog
     AlertDialog alert = AlertDialog(
-      title: Text("Autenticação falhou!"),
+      title: Text(titulo),
       content: Text(texto),
       actions: [
         lembrarButton,
