@@ -44,7 +44,7 @@ class _LoginState extends State<Login> {
               ),
               //TEXTO E TEXTFIELD PARA O NOME DO USUARIO
               Text(
-                'Usuário:  ',
+                'Email:  ',
                 style: TextStyle(
                   fontSize: 20,
                 ),
@@ -55,7 +55,7 @@ class _LoginState extends State<Login> {
                     email = text;
                   },
                   decoration: InputDecoration(
-                      labelText: 'Insira seu nome',
+                      labelText: 'Insira seu email',
                       border: OutlineInputBorder()),
                 ),
               ),
@@ -74,7 +74,7 @@ class _LoginState extends State<Login> {
               ),
               //TEXTO E TEXTFIELD PARA A SENHA
               Text(
-                'Senha:    ',
+                'Senha: ',
                 style: TextStyle(fontSize: 20),
               ),
               Flexible(
