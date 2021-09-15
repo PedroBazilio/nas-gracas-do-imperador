@@ -4,7 +4,7 @@ import 'package:app_nas_gracas_do_imperador/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-//PAGINA DAS CONFIGURAÇOES  --AINDA INUTILIZADA--
+//PAGINA DAS CONFIGURAÇOES 
 
 class Configs extends StatefulWidget {
   const Configs({Key? key}) : super(key: key);
@@ -25,7 +25,7 @@ class _ConfigsState extends State<Configs> {
             children: [
               SizedBox(
                 height: 30,
-                width: 80,
+                width: 90,
               ),
               //BOTAO PARA VOLTAR AO MENU
               BackButton(
@@ -43,33 +43,16 @@ class _ConfigsState extends State<Configs> {
                 height: 180,
               ),
               //TEXTO E SLIDER DO SOM
-              Row(
-                children: [
-                  Text(
-                    'Som: ',
-                    style: TextStyle(fontSize: 30),
-                  ),
-                  Switch(
-                    value: sound,
-                    onChanged: (value) {
-                      print('foi');
-                      setState(() {
-                        sound = value;
-                      });
-                    },
-                  ),
-                  
-                ],
-              ),
-              Row(children: [
-                TextButton(
-                    child: Text("Logout"),
-                    onPressed: () {
-                      _auth.logout();
-                      Navigator.of(context).pushNamed('/login');
-                    },
-                  )
-              ],)
+              TextButton(
+                child: Text(
+                  "Logout",
+                  style: TextStyle(fontSize: 35),
+                ),
+                onPressed: () {
+                  _auth.logout();
+                  Navigator.of(context).pushNamed('/login');
+                },
+              )
             ],
           )
         ],
